@@ -1,0 +1,65 @@
+============================================================
+           AI USAGE DECLARATION
+============================================================
+
+Name: Tamjeed Abdullah Noor
+Student ID: 19201062
+Assignment: 1
+Date:29.06.26
+
+------------------------------------------------------------
+1. AI TOOLS USED (check all that apply)
+------------------------------------------------------------
+[ ] None
+[✓] ChatGPT
+[ ] GitHub Copilot
+[ ] Google Gemini
+[ ] Claude
+[ ] Cursor
+[ ] Other: ________________
+
+------------------------------------------------------------
+2. PURPOSE OF AI USE (check all that apply)
+------------------------------------------------------------
+[✓] Learning/understanding concepts
+[ ] Debugging my code
+[✓] Generating code snippets
+[ ] Writing text content
+[✓] Design/styling ideas
+[ ] Image generation
+[ ] Other: ________________
+
+------------------------------------------------------------
+3. DESCRIPTION OF AI USE
+------------------------------------------------------------
+Briefly describe what you used AI for and how: For properly implementing the table. Understanding how some of the codes/functions work. Experimenting with different styles and understanding it.
+
+
+
+
+
+
+------------------------------------------------------------
+4. AI-ASSISTED SECTIONS
+------------------------------------------------------------
+List specific files/sections where AI helped significantly:
+
+File: index.html_________________ Section: table_________________
+File: index.html_________________ Section: dark mode_________________
+File: _________________ Section: _________________
+
+------------------------------------------------------------
+5. DECLARATION
+------------------------------------------------------------
+I declare that:
+- This disclosure is complete and accurate
+- I understand all code in my submission
+- I can explain and modify my work if asked
+- I take full responsibility for my submission
+
+Signature: Tamjeed Abdullah Noor_______________________
+Date: 29.06.26___________________________
+
+============================================================
+Save as: docs/AI_Declaration.txt
+============================================================
