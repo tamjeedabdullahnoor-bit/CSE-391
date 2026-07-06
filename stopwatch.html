@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Stopwatch</title>
+
+<link rel="stylesheet" href="style.css">
+
+<style>
+
+.stopwatch{
+
+    width:320px;
+    margin:120px auto;
+    padding:30px;
+
+    text-align:center;
+
+    background:#969aa3;
+
+    border-radius:10px;
+
+}
+
+#display{
+
+    font-size:50px;
+    font-weight:bold;
+
+    margin-bottom:25px;
+
+}
+
+.controls button{
+
+    margin:5px;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<h1>Stopwatch</h1>
+
+</header>
+
+<div class="stopwatch">
+
+<h2 id="display">0</h2>
+
+<div class="controls">
+
+<button onclick="startTimer()">Start</button>
+
+<button onclick="stopTimer()">Stop</button>
+
+<button onclick="resetTimer()">Reset</button>
+
+</div>
+
+</div>
+
+<footer>
+
+<p>It can only go upto 30 seconds.</p>
+
+</footer>
+
+<script>
+
+let time = 0;
+
+let timer = null;
+
+function startTimer(){
+
+<!-- The start button will not work if the timer is already running or stopped at 30s -->
+
+    if(timer !== null)
+        return;
+		
+	if(time >= 30)
+        return;
+
+<!-- Sets 3s interval for the timer to be updated in the site. It will automatically stop when the timer reaches 30s and also prevents updating  -->
+
+    timer = setInterval(function(){
+
+        time += 3;
+
+        document.getElementById("display").innerHTML = time;
+
+        if(time >= 30){
+
+            clearInterval(timer);
+
+            timer = null;
+			
+			time = 30;
+			
+            document.getElementById("display").innerHTML = time;
+
+        }
+
+    },3000);
+
+}
+
+<!-- Pauses the timer -->
+
+function stopTimer(){
+
+    clearInterval(timer);
+
+    timer = null;
+
+}
+
+<!-- Resets the timer -->
+
+function resetTimer(){
+
+    clearInterval(timer);
+
+    timer = null;
+
+    time = 0;
+
+    document.getElementById("display").innerHTML = time;
+
+}
+
+</script>
+
+</body>
+</html>

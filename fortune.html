@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fortune Generator</title>
+
+    <link rel="stylesheet" href="fortune.css">
+</head>
+
+<body>
+
+<header>
+    <h1>Fortune Generator</h1>
+</header>
+
+<main>
+
+    <div class="fortune-container">
+
+        <div id="fortuneBox">
+            Loading your fortune...
+        </div>
+
+        <div class="buttons">
+
+			<button class="blue" onclick="themeBlue()" title="Blue Theme"></button>
+
+			<button class="green" onclick="themeGreen()" title="Green Theme"></button>
+
+			<button class="purple" onclick="themePurple()" title="Purple Theme"></button>
+
+			<button class="dark" onclick="themeDark()" title="Dark Theme"></button>
+
+		</div>
+
+    </div>
+
+</main>
+
+<footer>
+    <p>Have a nice day!</p>
+</footer>
+
+<script>
+
+<!-- Arrays of Fortune message. Source- https://fortuneandframe.com/apps/fortunes/ff-originals -->
+
+const fortunes = [
+
+"Don’t hold onto things that require a tight grip.",
+
+"Look how far you've come.",
+
+"There are things in life that you can't control, and aren't supposed to.",
+
+"Putting yourself fully into what you do is a form of love.",
+
+"Do what you love. The rest will fall into place.",
+
+"Follow your heart. See what turns up.",
+
+"Speak good things about yourself into existence.",
+
+"Stop saying yes to things you don't want to do. ",
+
+"The only person who has to believe in you is you.",
+
+"Let go and let the universe do its thing."
+
+];
+
+<!-- Generates a number randomly and selects one of the 10 fortunes from the options -->
+
+window.onload = function(){
+
+    const random = Math.floor(Math.random()*fortunes.length);
+
+    document.getElementById("fortuneBox").innerHTML = fortunes[random];
+
+}
+
+<!-- Different presets for the box in which the fortune is shown -->
+
+const box = document.getElementById("fortuneBox");
+
+function themeBlue(){
+
+    box.style.color = "#ffffff";
+    box.style.background = "#3498db";
+    box.style.borderColor = "#1f4e79";
+    box.style.fontSize = "22px";
+    box.style.fontFamily = "Arial";
+
+}
+
+function themeGreen(){
+
+    box.style.color = "#ffffff";
+    box.style.background = "#27ae60";
+    box.style.borderColor = "#145a32";
+    box.style.fontSize = "24px";
+    box.style.fontFamily = "Lucida Console";
+
+}
+
+function themePurple(){
+
+    box.style.color = "#ffffff";
+    box.style.background = "#8e44ad";
+    box.style.borderColor = "#4a235a";
+    box.style.fontSize = "23px";
+    box.style.fontFamily = "Georgia";
+
+}
+
+function themeDark(){
+
+    box.style.color = "#f1f1f1";
+    box.style.background = "#2c3e50";
+    box.style.borderColor = "#95a5a6";
+    box.style.fontSize = "21px";
+    box.style.fontFamily = "Comic Sans MS";
+
+}
+
+</script>
+
+</body>
+</html>

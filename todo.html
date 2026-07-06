@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <title>To-Do List</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+
+        .todo-container{
+
+            width:500px;
+            margin:50px auto;
+            background:#969aa3;
+            padding:25px;
+            border-radius:10px;
+
+        }
+
+        .input-area{
+
+            display:flex;
+            gap:10px;
+            margin-bottom:20px;
+
+        }
+
+        #taskInput{
+
+            flex:1;
+            padding:10px;
+            font-size:16px;
+
+        }
+
+        ul{
+
+            list-style:none;
+            padding:0;
+
+        }
+
+        li{
+
+            display:flex;
+            align-items:center;
+            justify-content:space-between;
+
+            background:#7294e0;
+            padding:10px;
+            margin:8px 0;
+            border-radius:6px;
+
+        }
+
+        .task{
+
+            display:flex;
+            align-items:center;
+            gap:10px;
+
+        }
+
+        .completed{
+
+            text-decoration:line-through;
+            color:gray;
+
+        }
+
+        .delete{
+
+            background:#e74c3c;
+            padding:6px 12px;
+        }
+
+        .delete:hover{
+
+            background:#c0392b;
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<header>
+
+    <h1>To-Do List</h1>
+
+</header>
+
+<div class="todo-container">
+
+    <div class="input-area">
+
+        <input type="text" id="taskInput" placeholder="Enter a task">
+
+        <button onclick="addTask()">Add</button>
+
+    </div>
+
+    <ul id="taskList"></ul>
+
+</div>
+
+<footer>
+
+    <p>The tasks will be automatically saved.</p>
+
+</footer>
+
+<script>
+
+<!-- loads previously saved tasks, converts them from string to array -->
+
+let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+
+<!-- Saves added tasks, converts them from array to strings -->
+
+function saveTasks(){
+
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+
+}
+
+function displayTasks(){
+
+<!-- Gets a list of tasks, deletes already existing tasks to prevent duplicates -->
+
+    let list = document.getElementById("taskList");
+
+    list.innerHTML = "";
+
+    tasks.forEach(function(task,index){
+
+<!-- Loops through tasks and loads them -->
+
+        let li = document.createElement("li");
+
+        let taskDiv = document.createElement("div");
+
+        taskDiv.className = "task";
+
+<!-- Adds checks if they are completed(toggleable), completed tasks will have different color -->
+
+        let checkbox = document.createElement("input");
+
+        checkbox.type = "checkbox";
+        checkbox.checked = task.completed;
+
+        let text = document.createElement("span");
+
+        text.innerHTML = task.text;
+
+        if(task.completed){
+
+            text.classList.add("completed");
+
+        }
+
+<!-- Updates tasks with checkbox -->
+
+        checkbox.onchange = function(){
+
+            task.completed = checkbox.checked;
+
+            saveTasks();
+
+            displayTasks();
+
+        };
+
+<!-- Deletes task from the array and saves the array after that -->
+
+        taskDiv.appendChild(checkbox);
+
+        taskDiv.appendChild(text);
+
+        let deleteButton = document.createElement("button");
+
+        deleteButton.innerHTML = "Delete";
+
+        deleteButton.className = "delete";
+
+        deleteButton.onclick = function(){
+
+            tasks.splice(index,1);
+
+            saveTasks();
+
+            displayTasks();
+
+        };
+
+        li.appendChild(taskDiv);
+
+        li.appendChild(deleteButton);
+
+        list.appendChild(li);
+
+    });
+
+}
+
+<!-- Adds a task from input(not empty) and by default sets it as incomplete(unchecked) and saves the array -->
+
+function addTask(){
+
+    let input = document.getElementById("taskInput");
+
+    let text = input.value.trim();
+
+    if(text===""){
+
+        return;
+
+    }
+
+    tasks.push({
+
+        text:text,
+
+        completed:false
+
+    });
+
+    saveTasks();
+
+    displayTasks();
+
+    input.value="";
+
+}
+
+<!-- Show or refresh the displayed tasklist -->
+
+displayTasks();
+
+</script>
+
+</body>
+
+</html>
