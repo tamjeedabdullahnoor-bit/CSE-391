@@ -24,6 +24,8 @@
 
         <div class="buttons">
 
+			<button class="red" onclick="themeReset()" title="Reset"></button>
+
 			<button class="blue" onclick="themeBlue()" title="Blue Theme"></button>
 
 			<button class="green" onclick="themeGreen()" title="Green Theme"></button>
@@ -83,6 +85,16 @@ window.onload = function(){
 <!-- Different presets for the box in which the fortune is shown -->
 
 const box = document.getElementById("fortuneBox");
+
+function themeReset(){
+
+    box.style.color = "#000000";
+    box.style.background = "white";
+    box.style.borderColor = "#3498db";
+    box.style.fontSize = "22px";
+    box.style.fontFamily = "Arial";
+
+}
 
 function themeBlue(){
 

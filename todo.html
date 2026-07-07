@@ -112,6 +112,7 @@
 <footer>
 
     <p>The tasks will be automatically saved.</p>
+    <p id="Num">0</p>
 
 </footer>
 
@@ -119,11 +120,17 @@
 
 <!-- loads previously saved tasks, converts them from string to array -->
 
+let num = localStorage.getItem("num") || "0";
+
+document.getElementById("Num").innerHTML = num;
+
 let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
 
 <!-- Saves added tasks, converts them from array to strings -->
 
 function saveTasks(){
+
+    localStorage.setItem("num", num);
 
     localStorage.setItem("tasks", JSON.stringify(tasks));
 
@@ -192,6 +199,10 @@ function displayTasks(){
 
             tasks.splice(index,1);
 
+	    num = (parseInt(num) - 1).toString();
+
+	    document.getElementById("Num").innerHTML = num;
+
             saveTasks();
 
             displayTasks();
@@ -229,6 +240,10 @@ function addTask(){
         completed:false
 
     });
+
+    num = (parseInt(num) + 1).toString();
+
+    document.getElementById("Num").innerHTML = num;
 
     saveTasks();
 
